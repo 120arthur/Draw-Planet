@@ -25,6 +25,13 @@ public class GeradorDePernas : MonoBehaviour
     /// </summary>
     public void GerarPernas( Vector3[] PontosDeDobraDaPerna)
     {
+        for (int i = 0; i < JoelhosDaPernaUm.Length; i++)
+        {
+            Destroy(JoelhosDaPernaUm[i]);
+
+            Destroy(JoelhosDaPernaDois[i]);
+        }
+
         LRPernaUm.positionCount =  PontosDeDobraDaPerna.Length;
         LRPernaDois.positionCount = PontosDeDobraDaPerna.Length;
 
@@ -34,6 +41,7 @@ public class GeradorDePernas : MonoBehaviour
 
         JoelhosDaPernaUm = new GameObject[PontosDeDobraDaPerna.Length];
         JoelhosDaPernaDois = new GameObject[PontosDeDobraDaPerna.Length];
+
 
         for (int i = 0; i < PontosDeDobraDaPerna.Length; i++)
         {
@@ -50,10 +58,13 @@ public class GeradorDePernas : MonoBehaviour
             }
 
             LRPernaUm.SetPosition(i, UpdatedPositions[i]);
-            JoelhosDaPernaUm[i] = Instantiate(PrefabDoJoelho, UpdatedPositions[i], Quaternion.identity, LRPernaUm.transform);
+            JoelhosDaPernaUm[i] = Instantiate(PrefabDoJoelho, LRPernaUm.transform);
+            JoelhosDaPernaUm[i].transform.localPosition = UpdatedPositions[i];
 
             LRPernaDois.SetPosition(i, UpdatedPositions[i]);
-            JoelhosDaPernaDois[i] = Instantiate(PrefabDoJoelho, UpdatedPositions[i] * -1, Quaternion.identity, LRPernaDois.transform);
+            JoelhosDaPernaDois[i] = Instantiate(PrefabDoJoelho, LRPernaDois.transform);
+            JoelhosDaPernaDois[i].transform.localPosition = UpdatedPositions[i];
+
         }
     }
 }

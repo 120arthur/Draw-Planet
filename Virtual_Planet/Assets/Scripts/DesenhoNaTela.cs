@@ -31,7 +31,7 @@ public class DesenhoNaTela : MonoBehaviour
             ComecarADesenhar();
         }
 
-       
+
         else if (PodeDesenhar() == false && ApertouMouse == true)
         {
             PararDeDesenhar();
@@ -64,13 +64,9 @@ public class DesenhoNaTela : MonoBehaviour
     }
     public void ComecarADesenhar()
     {
+        Time.timeScale = 0.0f;
         ApertouMouse = true;
-        for (int i = 0; i < geradorDePernas.JoelhosDaPernaUm.Length; i++)
-        {
-            Destroy(geradorDePernas.JoelhosDaPernaUm[i]);
 
-            Destroy(geradorDePernas.JoelhosDaPernaDois[i]);
-        }
         IniciarDesenho = true;
         PosicaoDoMause = Input.mousePosition;
 
@@ -79,6 +75,7 @@ public class DesenhoNaTela : MonoBehaviour
 
     public void PararDeDesenhar()
     {
+        Time.timeScale = 1;
         ApertouMouse = false;
         IniciarDesenho = false;
         LRDesenhoDaPerna.useWorldSpace = false;
