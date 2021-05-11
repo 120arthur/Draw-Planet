@@ -26,7 +26,7 @@ public class DesenhoNaTela : MonoBehaviour
     private Camera Camera;
     void Update()
     {
-        if (ApertouMouse == false && Input.GetMouseButtonDown(0) && PodeDesenhar())
+        if (ApertouMouse == false && Input.GetButtonDown("Fire1") && PodeDesenhar())
         {
             ComecarADesenhar();
         }
@@ -36,7 +36,7 @@ public class DesenhoNaTela : MonoBehaviour
         {
             PararDeDesenhar();
         }
-        else if (Input.GetMouseButtonUp(0) && ApertouMouse == true)
+        else if (Input.GetButtonUp("Fire1") && ApertouMouse == true)
         {
             PararDeDesenhar();
         }
