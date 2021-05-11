@@ -25,5 +25,10 @@ public class Movimentacao : MonoBehaviour
         {
             rb.velocity = new Vector3 (1 * Velocidade * Time.deltaTime, rb.velocity.y, 0);
         }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
+  
     }
 }
