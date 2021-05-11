@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 74310475}
   - component: {fileID: 74310474}
   - component: {fileID: 74310478}
+  - component: {fileID: 74310479}
   m_Layer: 0
   m_Name: Jogador
   m_TagString: Untagged
@@ -238,6 +239,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &74310479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74310473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34ba0e1b32d1504eb9cbfc75d1007a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabDoJoelho: {fileID: 9024167907401181088, guid: 3ee6055dded71d84abeb918cf2b9d7de, type: 3}
+  LRPernaUm: {fileID: 1640527404}
+  LRPernaDois: {fileID: 983058438}
 --- !u!1 &76937732
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +361,6 @@ GameObject:
   - component: {fileID: 522944877}
   - component: {fileID: 522944876}
   - component: {fileID: 522944879}
-  - component: {fileID: 522944878}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -365,7 +380,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec45e11d8dff6f64099152447d225ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InstancegameManager: {fileID: 0}
+  geradorDePernas: {fileID: 74310479}
+  LRDesenhoDaPerna: {fileID: 1897687523}
+  PontosDeDobraDaPerna: []
+  Camera: {fileID: 963194227}
 --- !u!4 &522944877
 Transform:
   m_ObjectHideFlags: 0
@@ -380,40 +398,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &522944878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522944875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f34ba0e1b32d1504eb9cbfc75d1007a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PrefabDoJoelho: {fileID: 9024167907401181088, guid: 3ee6055dded71d84abeb918cf2b9d7de, type: 3}
-  PontosDeDobraDaPerna:
-  - {x: 0, y: 0, z: 0}
-  - {x: -0.38305354, y: -0.0910964, z: 0}
-  - {x: -0.90290546, y: -0.2127142, z: 0}
-  - {x: -1.4501156, y: -0.33476782, z: 0}
-  - {x: -1.8058023, y: -0.42543554, z: 0}
-  - {x: -2.106769, y: -0.486897, z: 0}
-  - {x: -2.1888516, y: -0.28995562, z: 0}
-  - {x: -2.1067696, y: -0.090381145, z: 0}
-  - {x: -1.7784432, y: -0.085119724, z: 0}
-  - {x: -1.3953935, y: -0.07898712, z: 0}
-  - {x: -1.149149, y: -0.075047016, z: 0}
-  - {x: -0.79346275, y: -0.012702465, z: 0}
-  - {x: -0.49249387, y: -0.007885933, z: 0}
-  - {x: -0.27360892, y: 0.052268982, z: 0}
-  - {x: -0.0000038146973, y: 0.113294125, z: 0}
-  - {x: -0.0000038146973, y: 0.113294125, z: 0}
-  LRDesenhoDaPerna: {fileID: 1897687523}
-  LRPernaUm: {fileID: 1640527404}
-  LRPernaDois: {fileID: 983058438}
-  Camera: {fileID: 963194227}
 --- !u!33 &522944879
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -527,10 +511,9 @@ GameObject:
   - component: {fileID: 740408842}
   - component: {fileID: 740408841}
   - component: {fileID: 740408840}
-  - component: {fileID: 740408839}
   m_Layer: 5
   m_Name: 'Desenho '
-  m_TagString: Untagged
+  m_TagString: PainelDeDesenho
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -554,24 +537,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 231.85327}
   m_SizeDelta: {x: 614.3528, y: 256.08148}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &740408839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 740408837}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f34ba0e1b32d1504eb9cbfc75d1007a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PrefabDoJoelho: {fileID: 9024167907401181088, guid: 3ee6055dded71d84abeb918cf2b9d7de, type: 3}
-  PontosDeDobraDaPerna: []
-  LRDesenhoDaPerna: {fileID: 1897687523}
-  LRPernaUm: {fileID: 1640527404}
-  LRPernaDois: {fileID: 983058438}
-  Camera: {fileID: 963194227}
 --- !u!33 &740408840
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -593,7 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.22745098}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -711,6 +676,7 @@ GameObject:
   m_Component:
   - component: {fileID: 983058437}
   - component: {fileID: 983058438}
+  - component: {fileID: 983058439}
   m_Layer: 0
   m_Name: Perna_Dois
   m_TagString: Untagged
@@ -830,6 +796,19 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
+--- !u!114 &983058439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983058436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043578099a7271744ab7acdb5a642bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Velocidade: 50
 --- !u!1 &1062539136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,6 +1060,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1640527403}
   - component: {fileID: 1640527404}
+  - component: {fileID: 1640527405}
   m_Layer: 0
   m_Name: Perna_Um
   m_TagString: Untagged
@@ -1201,6 +1181,19 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
+--- !u!114 &1640527405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640527402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043578099a7271744ab7acdb5a642bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Velocidade: 50
 --- !u!1 &1897687522
 GameObject:
   m_ObjectHideFlags: 0
