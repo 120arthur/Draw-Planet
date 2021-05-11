@@ -27,8 +27,7 @@ public class Movimentacao : MonoBehaviour
         }
         else
         {
-            rb.velocity = Vector3.zero;
+            rb.velocity = new Vector3(0.0f, rb.velocity.y, 0);
         }
-  
-    }
+    }   
 }

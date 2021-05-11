@@ -25,12 +25,18 @@ public class GeradorDePernas : MonoBehaviour
     /// </summary>
     public void GerarPernas( Vector3[] PontosDeDobraDaPerna)
     {
+        if (Time.frameCount % 30 == 0)
+        {
+            System.GC.Collect();
+        }
+
         for (int i = 0; i < JoelhosDaPernaUm.Length; i++)
         {
             Destroy(JoelhosDaPernaUm[i]);
 
             Destroy(JoelhosDaPernaDois[i]);
         }
+        
 
         LRPernaUm.positionCount =  PontosDeDobraDaPerna.Length;
         LRPernaDois.positionCount = PontosDeDobraDaPerna.Length;
