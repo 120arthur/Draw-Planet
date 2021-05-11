@@ -2454,7 +2454,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740408837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 21.580008}
+  m_LocalPosition: {x: 0, y: 0, z: 22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1216344371}
@@ -2462,8 +2462,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000005722046, y: 234.87}
-  m_SizeDelta: {x: 407.69, y: 256.08}
+  m_AnchoredPosition: {x: 12, y: 246}
+  m_SizeDelta: {x: 746.59, y: 443.71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!33 &740408840
 MeshFilter:
@@ -6935,7 +6935,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.2215361
+        value: 0.16858774
         inSlope: 0
         outSlope: 0
         tangentMode: 0

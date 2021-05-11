@@ -50,7 +50,7 @@ public class DesenhoNaTela : MonoBehaviour
 
             if (Distance_SqrMag > 500f)
             {
-                LRDesenhoDaPerna.SetPosition(IndexAtual, Camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 10f)));
+                LRDesenhoDaPerna.SetPosition(IndexAtual, Camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 5f)));
 
                 PosicaoDoMause = Input.mousePosition;
 
@@ -58,7 +58,7 @@ public class DesenhoNaTela : MonoBehaviour
 
                 LRDesenhoDaPerna.positionCount = IndexAtual + 1;
 
-                LRDesenhoDaPerna.SetPosition(IndexAtual, Camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 10f)));
+                LRDesenhoDaPerna.SetPosition(IndexAtual, Camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 5f)));
             }
         }
     }
