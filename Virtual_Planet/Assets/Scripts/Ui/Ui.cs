@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 public class Ui : MonoBehaviour
 {
     public static Ui InstanceUi;
+
+    [Header ("UI Panels")]
+    [SerializeField]
+    public GameObject GameOverPanel;
+
     private void Awake()
     {
         InstanceUi = this;

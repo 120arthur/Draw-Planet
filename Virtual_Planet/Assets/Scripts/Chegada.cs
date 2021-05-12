@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Chegada : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject GameOverPanel;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            Ui.InstanceUi.LigarPainel(GameOverPanel);
+            Ui.InstanceUi.LigarPainel(Ui.InstanceUi.GameOverPanel);
             Time.timeScale = 0;
         }
     }

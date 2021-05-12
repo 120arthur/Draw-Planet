@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Movimentacao : MonoBehaviour
 {
+    [SerializeField]
     private Rigidbody rb;
     [SerializeField]
     private int Velocidade;
@@ -11,12 +10,6 @@ public class Movimentacao : MonoBehaviour
     private Transform chaoVerificador;
     [SerializeField]
     private bool estaNoChao;
-
-    private void Start()
-    {
-       rb = gameObject.GetComponent<Rigidbody>();
-    }
-    // Update is called once per frame
     void Update()
     {
         estaNoChao = Physics.Linecast(transform.position, chaoVerificador.position, 1 << LayerMask.NameToLayer("Chao"));
