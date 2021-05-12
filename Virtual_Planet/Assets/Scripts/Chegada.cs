@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Chegada : MonoBehaviour
@@ -8,7 +6,7 @@ public class Chegada : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            Ui.InstanceUi.LigarPainel(Ui.InstanceUi.GameOverPanel);
+            Ui.instanceUi.LigarPainel(Ui.instanceUi.gameOverPanel);
             Time.timeScale = 0;
         }
     }

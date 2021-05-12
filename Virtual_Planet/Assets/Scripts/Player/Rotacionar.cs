@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Rotacionar : MonoBehaviour
 {
-    public float Velocidade;
+    public float velocidade;
     void Update()
     {
-        transform.Rotate(Vector3.forward, -Velocidade * Time.deltaTime);
+        transform.Rotate(Vector3.forward, -velocidade * Time.deltaTime);
     }
 }

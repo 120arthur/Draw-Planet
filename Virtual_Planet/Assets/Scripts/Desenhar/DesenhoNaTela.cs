@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,88 +11,94 @@ public class DesenhoNaTela : MonoBehaviour
     private GeradorDePernas geradorDePernas;
 
     [SerializeField]
-    private LineRenderer LRDesenhoDaPerna;
+    private LineRenderer lRDesenhoDaPerna;
 
     [SerializeField]
-    private Vector3[] PontosDeDobraDaPerna;
+    private Vector3[] pontosDeDobraDaPerna;
 
-    private bool IniciarDesenho;
-    private Vector3 PosicaoDoMause;
-    private int IndexAtual;
-    private bool ApertouMouse;
+    private bool iniciarDesenho;
+    private Vector3 posicaoDoMause;
+    private int indexAtual;
+    private bool Desenhando;
 
     [SerializeField]
-    private Camera Camera;
+    private Camera camera;
     void Update()
     {
-        if (ApertouMouse == false && Input.GetButtonDown("Fire1") && PodeDesenhar())
+        if (Desenhando == false && Input.GetButtonDown("Fire1") && PodeDesenhar())
         {
             ComecarADesenhar();
         }
 
 
-        else if (PodeDesenhar() == false && ApertouMouse == true)
-        {
-            PararDeDesenhar();
-        }
-        else if (Input.GetButtonUp("Fire1") && ApertouMouse == true)
+        else if (PodeDesenhar() == false && Desenhando == true || Input.GetButtonUp("Fire1") && Desenhando == true)
         {
             PararDeDesenhar();
         }
 
-        if (IniciarDesenho)
+        if (iniciarDesenho)
         {
 
-            Vector3 Dist = PosicaoDoMause - Input.mousePosition;
+            if (Time.frameCount % 30 == 0)
+            {
+                System.GC.Collect();
+            }
+
+            Vector3 Dist = posicaoDoMause - Input.mousePosition;
 
             float Distance_SqrMag = Dist.sqrMagnitude;
 
             if (Distance_SqrMag > 500f)
             {
-                LRDesenhoDaPerna.SetPosition(IndexAtual, Camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 5f)));
+                lRDesenhoDaPerna.SetPosition(indexAtual, camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 4f)));
 
-                PosicaoDoMause = Input.mousePosition;
+                posicaoDoMause = Input.mousePosition;
 
-                IndexAtual++;
+                indexAtual++;
 
-                LRDesenhoDaPerna.positionCount = IndexAtual + 1;
+                lRDesenhoDaPerna.positionCount = indexAtual + 1;
 
-                LRDesenhoDaPerna.SetPosition(IndexAtual, Camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 5f)));
+                lRDesenhoDaPerna.SetPosition(indexAtual, camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 4f)));
             }
         }
     }
     public void ComecarADesenhar()
     {
         Time.timeScale = 0.0f;
-        ApertouMouse = true;
 
-        IniciarDesenho = true;
-        PosicaoDoMause = Input.mousePosition;
+        Desenhando = true;
 
-        LRDesenhoDaPerna.positionCount = 2;
+        iniciarDesenho = true;
+        posicaoDoMause = Input.mousePosition;
+
+        lRDesenhoDaPerna.positionCount = 2;
     }
 
     public void PararDeDesenhar()
     {
         Time.timeScale = 1;
-        ApertouMouse = false;
-        IniciarDesenho = false;
-        LRDesenhoDaPerna.useWorldSpace = false;
 
-        PontosDeDobraDaPerna = new Vector3[LRDesenhoDaPerna.positionCount];
+        Desenhando = false;
+        iniciarDesenho = false;
+        lRDesenhoDaPerna.useWorldSpace = false;
 
-        for (int i = 0; i < LRDesenhoDaPerna.positionCount; i++)
+        pontosDeDobraDaPerna = new Vector3[lRDesenhoDaPerna.positionCount];
+
+        // Salva em um array os pontos que o desenho fez.
+        for (int i = 0; i < lRDesenhoDaPerna.positionCount; i++)
         {
-            PontosDeDobraDaPerna[i] = LRDesenhoDaPerna.GetPosition(i);
+            pontosDeDobraDaPerna[i] = lRDesenhoDaPerna.GetPosition(i);
         }
 
-        StartCoroutine(geradorDePernas.CriadorDePernaSimples.GerarPernas(PontosDeDobraDaPerna));
+        StartCoroutine(geradorDePernas.CriadorDePernaSimples.GerarPernas(pontosDeDobraDaPerna));
 
-        LRDesenhoDaPerna.positionCount = 0;
+        lRDesenhoDaPerna.positionCount = 0;
 
-        IndexAtual = 0;
+        indexAtual = 0;
     }
-
+    /// <summary>
+    /// Verifica se o mouse está em cima da ui de desenho e retorna um bool.
+    /// </summary>
     private bool PodeDesenhar()
     {
         PointerEventData pointerEventData = new PointerEventData(EventSystem.current);

@@ -1,19 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+/// <summary>
+/// Gerencia as Uis do game.
+/// </summary>
 public class Ui : MonoBehaviour
 {
-    public static Ui InstanceUi;
+    public static Ui instanceUi;
 
     [Header ("UI Panels")]
-    [SerializeField]
-    public GameObject GameOverPanel;
+    public GameObject gameOverPanel;
 
     private void Awake()
     {
-        InstanceUi = this;
+        instanceUi = this;
     }
     public void LigarPainel(GameObject Panel)
     {
