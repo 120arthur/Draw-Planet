@@ -87,7 +87,7 @@ public class DesenhoNaTela : MonoBehaviour
             PontosDeDobraDaPerna[i] = LRDesenhoDaPerna.GetPosition(i);
         }
 
-        geradorDePernas.GerarPernas(PontosDeDobraDaPerna);
+        StartCoroutine(geradorDePernas.GerarPernas(PontosDeDobraDaPerna));
 
         LRDesenhoDaPerna.positionCount = 0;
 

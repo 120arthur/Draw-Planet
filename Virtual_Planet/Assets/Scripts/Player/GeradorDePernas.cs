@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -23,7 +24,7 @@ public class GeradorDePernas : MonoBehaviour
     /// <summary>
     /// Recebe os transforms gerados pelo desenho, transforma em um LineRenderer e instancia gameObjects nos respectivos pontos do LineRenderer.
     /// </summary>
-    public void GerarPernas( Vector3[] PontosDeDobraDaPerna)
+    public IEnumerator GerarPernas( Vector3[] PontosDeDobraDaPerna)
     {
         if (Time.frameCount % 30 == 0)
         {
@@ -38,9 +39,6 @@ public class GeradorDePernas : MonoBehaviour
         }
         
 
-        LRPernaUm.positionCount =  PontosDeDobraDaPerna.Length;
-        LRPernaDois.positionCount = PontosDeDobraDaPerna.Length;
-
 
         Vector3[] UpdatedPositions = PontosDeDobraDaPerna;
         Vector3 zeroPosition = new Vector3(0, 0, 0);
@@ -51,6 +49,9 @@ public class GeradorDePernas : MonoBehaviour
 
         for (int i = 0; i < PontosDeDobraDaPerna.Length; i++)
         {
+
+        LRPernaUm.positionCount =  i +1;
+        LRPernaDois.positionCount = i+1;
 
             if (i == 0)
             {
@@ -70,7 +71,7 @@ public class GeradorDePernas : MonoBehaviour
             LRPernaDois.SetPosition(i, UpdatedPositions[i]);
             JoelhosDaPernaDois[i] = Instantiate(PrefabDoJoelho, LRPernaDois.transform);
             JoelhosDaPernaDois[i].transform.localPosition = UpdatedPositions[i];
-
+            yield return new WaitForSecondsRealtime(0.01f);
         }
     }
 }
