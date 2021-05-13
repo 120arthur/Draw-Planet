@@ -48,6 +48,7 @@ public class DesenhoNaTela : MonoBehaviour
 
             float Distance_SqrMag = Dist.sqrMagnitude;
 
+            // Faz o desenho na tela.
             if (Distance_SqrMag > 500f)
             {
                 lRDesenhoDaPerna.SetPosition(indexAtual, camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 4f)));

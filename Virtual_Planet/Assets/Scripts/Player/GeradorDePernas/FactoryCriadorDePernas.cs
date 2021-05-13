@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 /// <summary>
+/// Padrão de projeto Factory:
 /// esta classe abstrata permite que as subclasses criem variações de pernas.
 /// </summary>
 public abstract class FactoryCriadorDePernas : MonoBehaviour
